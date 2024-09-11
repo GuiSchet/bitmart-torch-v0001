@@ -12,7 +12,6 @@ import torch
 import torch.nn as nn
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler
-from sre_constants import error
 
 load_dotenv()
 
@@ -31,15 +30,19 @@ delay = 2 # seconds
 markets_list = []
 mercadoBase = 'BTC'
 
+
+
 ## Iterar por todas las monedas para dejar solo mercadoBase
-for key in markets.keys():
+# for key in markets.keys():
   
-  # Check if '/BTC' is in the key and if 'state' exists in the 'info' dictionary and is 'online'
-  if mercadoBase == markets[key]['quote']:
-    markets_list.append(key)
+## Check if '/BTC' is in the key and if 'state' exists in the 'info' dictionary and is 'online'
+##  if mercadoBase == markets[key]['quote']:
+##    markets_list.append(key)
 
-#print(exchange.has)
+#print(markets_list)
+print(exchange.has)
 
+markets_list = ['LTC/BTC', 'ZRX/BTC', 'ATOM/BTC', 'XLM/BTC', 'TRX/BTC', 'TRAC/BTC', 'DASH/BTC', 'LINK/BTC', 'XMR/BTC', 'SOL/BTC', 'BNB/BTC', 'MKR/BTC', 'ZIL/BTC', 'QTUM/BTC', 'VET/BTC', 'ONT/BTC', 'BCH/BTC', 'ETH/BTC']
 
 ## Carga OHLCV.
 def dataOHLCV(market):
@@ -175,7 +178,7 @@ if __name__ == '__main__':
         except:
             print(f"Error tomando predicciones en {market}")
             continue
-        if pred_mean > price_close and pred_mean / price_close < 1.4 and pred_mean / price_close > 1.02:
+        if pred_mean > price_close and pred_mean / price_close > 1.02:
             markets_up.append([market, pred_mean, price_close, pred_mean / price_close])
     markets_up = sorted(markets_up, key=lambda x: x[3], reverse=True)
     print('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
