@@ -17,32 +17,28 @@ load_dotenv()
 
 ## Inicializacion del exchange.
 
-exchange_id = 'bitmart'
+exchange_id = 'pionex'
 exchange_class = getattr(ccxt, exchange_id)
 exchange = exchange_class({
-    'apiKey': os.getenv('API_KEY'),
-    'secret': os.getenv('API_SECRET'),
+    'apiKey': os.getenv('PIONEX_API_KEY'),
+    'secret': os.getenv('PIONEX_SECRET'),
     'timeout': 30000,
     'enableRateLimit': True,
 })
 markets = exchange.load_markets ()
 delay = 2 # seconds
-markets_list = []
 mercadoBase = 'BTC'
-
-
-
+markets_list = []
 ## Iterar por todas las monedas para dejar solo mercadoBase
-# for key in markets.keys():
-  
-## Check if '/BTC' is in the key and if 'state' exists in the 'info' dictionary and is 'online'
-##  if mercadoBase == markets[key]['quote']:
-##    markets_list.append(key)
+for key in markets.keys():
+  if mercadoBase == markets[key]['quote']:
+      markets_list.append(key)
 
 #print(markets_list)
 print(exchange.has)
 
-markets_list = ['LTC/BTC', 'ZRX/BTC', 'ATOM/BTC', 'XLM/BTC', 'TRX/BTC', 'TRAC/BTC', 'DASH/BTC', 'LINK/BTC', 'XMR/BTC', 'SOL/BTC', 'BNB/BTC', 'MKR/BTC', 'ZIL/BTC', 'QTUM/BTC', 'VET/BTC', 'ONT/BTC', 'BCH/BTC', 'ETH/BTC']
+#MERKET LIST HARDCODEADA PARA BITMART.
+#markets_list = ['LTC/BTC', 'ZRX/BTC', 'ATOM/BTC', 'XLM/BTC', 'TRX/BTC', 'TRAC/BTC', 'DASH/BTC', 'LINK/BTC', 'XMR/BTC', 'SOL/BTC', 'BNB/BTC', 'MKR/BTC', 'ZIL/BTC', 'QTUM/BTC', 'VET/BTC', 'ONT/BTC', 'BCH/BTC', 'ETH/BTC']
 
 ## Carga OHLCV.
 def dataOHLCV(market):
@@ -89,6 +85,7 @@ def crear_secuencias(data, n_steps):
 # Función principal para la predicción y entrenamiento
 def prediccion6h(market):
     data = dataOHLCV(market)  # Aquí obtienes los datos de OHLCV (open, high, low, close, volume)
+    print(data)
 
     # Asegúrate de que 'timestamp' es el índice del DataFrame
     data = data.dropna()  # Elimina cualquier fila con valores faltantes
