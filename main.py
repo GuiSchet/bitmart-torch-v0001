@@ -17,11 +17,11 @@ load_dotenv()
 
 ## Inicializacion del exchange.
 
-exchange_id = 'pionex'
+exchange_id = 'bitmart'
 exchange_class = getattr(ccxt, exchange_id)
 exchange = exchange_class({
-    'apiKey': os.getenv('PIONEX_API_KEY'),
-    'secret': os.getenv('PIONEX_SECRET'),
+    'apiKey': os.getenv('BITMART_API_KEY'),
+    'secret': os.getenv('BITMART_SECRET'),
     'timeout': 30000,
     'enableRateLimit': True,
 })
