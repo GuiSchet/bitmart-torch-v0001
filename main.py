@@ -38,7 +38,7 @@ for key in markets.keys():
 print(exchange.has)
 
 #MERKET LIST HARDCODEADA PARA BITMART.
-#markets_list = ['LTC/BTC', 'ZRX/BTC', 'ATOM/BTC', 'XLM/BTC', 'TRX/BTC', 'TRAC/BTC', 'DASH/BTC', 'LINK/BTC', 'XMR/BTC', 'SOL/BTC', 'BNB/BTC', 'MKR/BTC', 'ZIL/BTC', 'QTUM/BTC', 'VET/BTC', 'ONT/BTC', 'BCH/BTC', 'ETH/BTC']
+markets_list = ['LTC/BTC', 'ZRX/BTC', 'ATOM/BTC', 'XLM/BTC', 'TRX/BTC', 'TRAC/BTC', 'DASH/BTC', 'LINK/BTC', 'XMR/BTC', 'SOL/BTC', 'BNB/BTC', 'MKR/BTC', 'ZIL/BTC', 'QTUM/BTC', 'VET/BTC', 'ONT/BTC', 'BCH/BTC', 'ETH/BTC']
 
 ## Carga OHLCV.
 def dataOHLCV(market):
